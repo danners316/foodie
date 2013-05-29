@@ -1,0 +1,6 @@
+
+<p ><%= image_tag feed_item.image.url, :class => "centeredsml" %>
+<%= link_to feed_item.user.username, feed_item.user %> published
+  <%= link_to feed_item.name, feed_item %><br />
+  Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+</p>

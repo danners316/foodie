@@ -1,0 +1,7 @@
+<div id="stats">
+<a href="<%= following_user_path(@user) %>">
+   <span class="let" >F</span>ollowing <%= @user.followed_users.count %> User </a><br />
+  <a href="<%= followers_user_path(@user) %>">
+    <span class="let" >F</span>ollowed by <%= @user.followers.count %> User
+  </a>
+</div>

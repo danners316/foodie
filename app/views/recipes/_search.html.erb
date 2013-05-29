@@ -1,0 +1,7 @@
+<%= form_tag recipes_path, :method => 'get' do %>
+    <p>
+      <%= text_area_tag :search_query, params[:search_query], :rows=>2, :cols=>40 %><br />
+      <%= image_submit_tag("searchbutton.fw.png")%>
+    </p>
+
+<% end %>

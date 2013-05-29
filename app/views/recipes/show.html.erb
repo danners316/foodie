@@ -1,0 +1,31 @@
+
+<dl class="frcr">
+  <h4>Cooking Method</h4>
+  <div class="fr">
+  <dt>Step One</dt>
+  <dd><%= @recipe.step_one %></dd>
+  <dt>Step Two</dt>
+  <dd><%= @recipe.step_two %></dd>
+  <dt>Step three</dt>
+  <dd><%= @recipe.step_three %></dd>
+      </div>
+</dl>
+<dl class="frcr">
+  <h4>Ingredients</h4>
+  <div class="fr">
+    <dt><%= @recipe.ingredients %></dt>
+  </div>
+</dl>
+<div id="recipeshow">
+  <p class="flcl"><%= image_tag @recipe.image.url, :class => "centered" %><br />
+  <h4 class="fl">By: <%= @recipe.username  %></h4></p>
+</div>
+
+<div class="fl">
+  <div id="comments">
+  <% if @recipe.comments.any? %>
+  <%= render @recipe.comments %>
+      <% end %>
+  </div>
+<%= render 'comments/new' %>
+    </div>

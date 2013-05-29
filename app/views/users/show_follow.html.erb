@@ -1,0 +1,16 @@
+<h1><%= @user.username %>'s Foodie Web</h1>
+
+
+<% if @users.any? %>
+<% @users.each do |user| %>
+    <% if user.image.file? %>
+        <%= image_tag user.image.url, :class => "centeredsml" %>
+    <% else %>
+        <%= image_tag("nopic.jpg", :alt => "Shadow Picture", :class => "centeredsml") %>
+    <% end %> <br /> <%= link_to user.username, user %> from <%= user.region_name %>  who has <%= user.recipes.count %> recipes <br />
+<% end %>
+<% else %>
+    <h4>You Have No Friends</h4>
+    <%= link_to "Add A Friend", user_index_path %><br />
+<%= link_to "Search Users By Region", site_index_path %>
+<% end %>

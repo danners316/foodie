@@ -1,0 +1,23 @@
+
+<%= form_for :user, :html => { :multipart => true } do |f| %>
+
+    <p>
+      <%= f.label :username, 'UserName' %> <br />
+      <%= f.text_field :username %></p>
+    <p>
+      <%= f.label :region_name, 'Region' %> <br />
+      <%= f.collection_select :region_name, Region.all, :region_name, :region_name %></p>
+    <p>
+      <%= f.label :password %> <br />
+      <%= f.password_field :password, size: 40 %></p>
+    <p>
+      <%= f.label :password_confirmation, 'Confirm Password' %> <br />
+      <%= f.password_field :password_confirmation, size: 40 %></p>
+
+    <p> <%= f.label :email %> <br /> <%= f.text_field :email %></p>
+    <p> <%= f.label :favourite_spices %><br /><%= f.text_field :favourite_spices %> </p>
+    <p> <%= f.label :cooking_history %><br /><%= f.text_area :cooking_history, rows: 6 %></p>
+    <p> <%= f.label :date_of_birth, 'Date Of Birth:' %><br /><%= f.date_select :date_of_birth, :start_year => Time.now.year-100, :end_year => Time.now.year %> </p>
+    <p> <%= f.file_field :image %> </p>
+    <p> <%= f.submit "Register At Foodie!" %></p>
+<% end %>

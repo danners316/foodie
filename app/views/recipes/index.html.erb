@@ -1,0 +1,24 @@
+
+
+<% @recipes.each do|recipe| %>
+<ul class="ind">
+<li><%= image_tag recipe.image.url, :class => "centeredmid" %></li>
+<li><%= link_to recipe.name, recipe %></li>
+<li><%= recipe.username %></li>
+<% if current_user && current_user.admin  %>
+<li><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      <% end %>
+</ul>
+<% end %>
+
+
+    <div id="user_nav">
+      <ul>
+        <li><%= link_to 'Gluten Free', recipes_gluten_free_path %></li>
+        <li><%= link_to 'Dairy Free', recipes_dairy_free_path %></li>
+        <li><%= link_to 'Low Fat', recipes_low_fat_path %></li>
+      </ul>
+</div>
+
+
+

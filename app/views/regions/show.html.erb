@@ -1,0 +1,40 @@
+<% if @users.any? %>
+<div class="region_col">
+  <h4>Users from <%= @region.region_name %></h4>
+  <% @users.each do |user| %>
+      <%= link_to user.username, user %><br />
+      <%= image_tag user.image.url, :class => "centeredsml"  %><br />
+      <% @recipes = user.recipes  %>
+
+
+  <% end %>
+<% if @recipes.any? %>  
+</div>
+<div class="region_col">
+  <h4>Recipes from <%= @region.region_name %></h4>
+  <% @recipes.each do |recipe| %>
+      <%= link_to recipe.name, recipe %> <br />
+      <%= image_tag recipe.image.url, :class => "centeredsml"  %><br />
+  <% end %>
+</div>
+      <% end %>
+<%end %>
+  <%= image_tag @region.image.url, :class=>"centeredlrg" %>
+
+
+
+
+
+
+
+
+
+
+<div id="region_write">
+<h3>History</h3>
+<p><%= @region.history %><br/></p>
+<h3>Common Spices</h3>
+<p><%= @region.common_spices %> </p>
+<%= link_to 'Edit', edit_region_path(@region) %>
+</div>
+

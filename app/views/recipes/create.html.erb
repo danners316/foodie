@@ -1,0 +1,43 @@
+
+<%= form_for :recipe, :html => { :multipart => true } do |f| %>
+
+    <p>
+      <%= f.label :name, 'Recipe Name' %><br />
+      <%= f.text_field :name %> </p>
+    <p>
+      <%= f.label :ingredients, 'Ingredients' %><br />
+      <%= f.text_area :ingredients, rows: 5 %> </p>
+    <p>
+      <%= f.label :step_one, 'Method; Step One' %><br />
+      <%= f.text_area :step_one, rows: 10 %> </p>
+    <p>
+      <%= f.label :step_two, 'Method; Step Two' %><br />
+      <%= f.text_area :step_two, rows: 10 %> </p>
+    <p>
+      <%= f.label :step_three, 'Method; Step Three' %><br />
+      <%= f.text_area :step_three, rows: 10 %> </p>
+    <p>
+      <%= f.label :gluten_free, 'Gluten Free?'  %>
+      <%= f.check_box :gluten_free, {}, true, false %>
+    </p>
+    <p>
+      <%= f.label :dairy_free, 'Dairy Free?'  %>
+      <%= f.check_box :dairy_free, {}, true, false %>
+    </p>
+    <p>
+      <%= f.label :low_fat, 'Low Fat?'  %>
+      <%= f.check_box :low_fat, {}, true, false %>
+    </p>
+
+    <p>
+      <%= f.label :image, 'Image Upload'  %>
+      <%= f.file_field :image %>
+    </p>
+
+    <p>
+      <%= f.hidden_field :username, :value => "#{current_user.username}" %>
+    </p>
+    
+
+    <p><%= f.submit "Publish Recipe" %></p>
+<% end %>

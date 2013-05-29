@@ -1,0 +1,4 @@
+$('#feed').html('<%=escape_javascript render "shared/feed" %>');
+$('#feed .pagination a').attr('data-remote', 'true');
+$('#recipes').html('<%=escape_javascript render @recipes %>');
+$('#recipes .pagination a').attr('data-remote', 'true');

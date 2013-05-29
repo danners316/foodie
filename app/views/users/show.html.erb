@@ -1,0 +1,118 @@
+
+
+<div class="image">
+  <% if @user.image.file? %>
+      <%= image_tag @user.image.url, :class => "centered" %>
+  <% else %>
+      <%= image_tag("nopic.jpg", :alt => "Shadow Picture", :class => "centered") %>
+  <% end %>
+</div>
+<div id="feed1">
+<%= image_tag("recent.fw.png") %>
+<div id="feed">
+  <div class="fl"><%= render 'shared/feed' %>
+  </div>
+  </div>
+  </div>
+
+
+
+
+<div id="mid">
+  <div id="friends">
+    <% if current_user == @user %>
+    <h4><%= link_to image_tag("showfollow.fw.png"),following_user_path(@user) %></h4>
+        <% end %>
+    <% if @following.any? %>
+        <% @following.each do |friend| %>
+            <div class="fl">
+              <% if friend.image.file? %>
+                  <%= image_tag friend.image.url, :class => "centeredsml" %>
+              <% else %>
+                  <%= image_tag("nopic.jpg", :alt => "Shadow Picture", :class => "centeredsml") %>
+              <% end %>
+            </div><ul><li> <%= link_to friend.username, friend %></li><li><%= friend.region_name %></li><li><%= friend.recipes.count %> recipes</li>
+  </ul><% end %>
+        <%= will_paginate @following, :param_name => 'friends_page' %>
+        <%= render 'shared/stats' %>
+
+    <% else %>
+        <% if current_user == @user %>
+        <%= link_to "Add A Friend", user_index_path %><br />
+        <%= link_to "Search Users By Region", site_index_path %>
+            <% end %>
+    <% end %>
+  </div>
+
+  <div id="recipes1">
+    <% if current_user == @user %>
+    <%= link_to image_tag("newrecipebutton.fw.png"), recipes_create_path %>
+        <% end %>
+    <% unless @user.recipes.empty? %>
+        <div id="recipes"> <%= render @recipes %></div>
+    <% else %>
+        <% if current_user == @user %>
+        <dl>
+        <dt>You Have No Recipes</dt>
+        <dd><%= link_to "Add A Recipe", recipes_create_path %></dd>
+        </dl>
+            <% end %>
+    <% end %>
+
+
+  </div>
+
+  <div class="col">
+    <h4>A History in Food</h4>
+    <p><%= @user.cooking_history %></p>
+    <h4>Favourite Spices</h4>
+    <p><%= @user.favourite_spices %></p>
+  </div>
+  <div class="col">
+
+
+
+    <h4><%= @user.username %>'s Details</h4>
+    <p>
+    Region: <%= @user.region_name %><br />
+    E-mail: <%= @user.email %><br />
+    Date Of Birth: <%= @user.date_of_birth %><br />
+    <%= @user.username %> has <%= @user.recipes.count %> <span class="let">R</span>ecipes<br /><br />
+       <% unless current_user == @user %>
+        <div class="fr"><%= render 'users/fform' %></div>
+    <% end %>
+      </p>
+  </div>
+</div>
+</div>
+
+
+
+
+
+	  <script>
+$(document).ready(function() {
+    $('#feed .pagination a').attr('data-remote', 'true');
+    $('#recipes .pagination a').attr('data-remote', 'true');
+});</script>
+<% if current_user == @user %>
+<div id="user_nav">
+  <ul>
+  <li><%= link_to_unless_current 'New Recipe', recipes_create_path %></li>
+    <li><%= link_to_unless_current 'Edit', edit_user_path(@user) %></li>
+    <li><%= link_to_unless_current 'Followers', followers_user_path(@user)  %></li>
+    <li><%= link_to_unless_current 'Following',  following_user_path(@user) %></li>
+  </ul>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+

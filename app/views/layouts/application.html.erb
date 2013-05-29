@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @title %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if current_user && current_user.admin %>
+<div id="admin">
+  <%= link_to 'Admin', site_index_path %>
+</div>
+    <% end %>
+<div id="wrapper">
+  <div class="fr">
+    <div id="navbar">
+      <%= link_to_unless_current 'Map', site_index_path %>
+      <%= link_to_unless_current 'Register', users_register_path %>
+      <%= link_to_unless_current 'Users', users_path %>
+      <%= link_to_unless_current 'Homepage', current_user %>
+      <%= link_to_unless_current 'Recipes', recipes_path %>
+      <% if session[:user_id] %>
+          <%= link_to "Logout", logout_path %>
+      <% else %>
+          <div><%= render 'sessions/login'%></div>
+      <% end %>
+    </div>
+    <div> <% if notice %>
+          <p id="notice"><%= notice %></p>
+      <% end %>
+    </div>
+
+
+  </div>
+<div id="logo"><%= link_to image_tag("logo.jpg"), site_index_path %><div id="search"><%= render 'recipes/search'%></div></div>
+<div id="title"> <%= @title %> </div>
+
+
+
+
+<%= yield %>
+
+<script src="jquery-1.9.1.min.js"></script>
+</div>
+</body>
+</html>

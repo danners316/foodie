@@ -1,0 +1,16 @@
+
+<dl>
+
+  <%= image_tag recipe.image.url%>
+  <h4><%= link_to recipe.name, recipe %></h4><br />
+  <dt>Ingredients</dt> <dd> <%= recipe.ingredients %></dd>
+  <dt>Published</dt> <dd>  <%= time_ago_in_words(recipe.created_at) %> ago.</dd>
+  <% if current_user == @user %>
+<%= link_to "Bin Recipe", recipe, :method => :delete, confirm:'You Sure?' %>
+      <% end %>
+
+</dl>
+
+<%= will_paginate @recipes, :param_name => 'recipes_page' %>
+
+
