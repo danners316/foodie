@@ -6,9 +6,7 @@ class RecipesController < ApplicationController
     @recipes = Recipe.search(params[:search_query])
     end
 
-  def create
-    @title = "Create A Recipe!"
-    @recipe = current_user.recipes.build(params[:recipe])
+  def create@recipe = current_user.recipes.build(params[:recipe])
     if request.post?
       if @recipe.save
         redirect_to current_user, :notice => 'Recipe created!'
@@ -16,6 +14,8 @@ class RecipesController < ApplicationController
         redirect_to current_user, :notice => 'Recipe was not created, Sorry.'
       end
     end
+    @title = "Create A Recipe!"
+    
   end
 
   def show
