@@ -12,6 +12,17 @@
  *= require_tree .
  */
 
+@font-face {
+    font-family: "A Year Without Rain";
+    src: url('ayearwithoutrain-webfont.eot');
+    src: url('ayearwithoutrain-webfont.eot?#iefix') format('embedded-opentype'),
+    url('ayearwithoutrain-webfont.woff') format('woff'),
+    url('ayearwithoutrain-webfont.ttf') format('truetype'),
+    url("ayearwithoutrain-webfont.svg#A Year Without Rain") format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body{
 font-family: "A Year Without Rain";
 }
