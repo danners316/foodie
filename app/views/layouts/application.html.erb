@@ -18,11 +18,11 @@
       <%= link_to_unless_current 'Map', site_index_path %>
       <%= link_to_unless_current 'Register', users_register_path %>
       <%= link_to_unless_current 'Users', users_path %>
-      <% if current_user %>
+
       <%= link_to_unless_current 'Homepage', current_user %>
-      <% end %>
+
       <%= link_to_unless_current 'Recipes', recipes_path %>
-      <% if current_user %>
+      <% if session[:user_id] %>
           <%= link_to "Logout", logout_path %>
       <% else %>
           <div><%= render 'sessions/login'%></div>
