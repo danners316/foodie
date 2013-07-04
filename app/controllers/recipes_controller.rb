@@ -6,7 +6,8 @@ class RecipesController < ApplicationController
     @recipes = Recipe.search(params[:search_query])
     end
 
-  def create@recipe = current_user.recipes.build(params[:recipe])
+  def create
+    @recipe = current_user.recipes.build(params[:recipe])
     if request.post?
       if @recipe.save
         redirect_to current_user, :notice => 'Recipe created!'
