@@ -13,7 +13,11 @@ class User < ActiveRecord::Base
   has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
 
-  has_attached_file :image
+  has_attached_file :image,
+                    :storage => :s3,
+                    :s3_credentials => "#{Rails.root}/config/s3.yml"",
+  :path => ":attachment/:id.:extension",
+  :bucket => "foodie_europe"
 
 
 

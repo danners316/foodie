@@ -47,3 +47,4 @@ gem 'jquery-rails'
 # gem 'debugger'
 
   gem 'paperclip'
+  gem 'aws-s3'
