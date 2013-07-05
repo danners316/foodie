@@ -61,8 +61,10 @@
         <dd><%= link_to "Add A Recipe", recipes_create_path %></dd>
         </dl>
             <% else %>
-            <p><%= @user.username %> has no Recipes Yet.<br />
-              He Must Be new</p>
+                       <dl>
+              <dt><%= @user.username %> has no Recipes Yet.</dt>
+              <dd>He Must Be new</dd>
+            </dl>
             <% end %>
     <% end %>
 
