@@ -40,6 +40,10 @@
         <% if current_user == @user %>
         <%= link_to "Add A Friend", user_index_path %><br />
         <%= link_to "Search Users By Region", site_index_path %>
+            <% else %>
+        <p><% @user.name %> has no Friends Yet.<br />
+            He Must Be new</p>
+            
             <% end %>
     <% end %>
   </div>
@@ -56,6 +60,9 @@
         <dt>You Have No Recipes</dt>
         <dd><%= link_to "Add A Recipe", recipes_create_path %></dd>
         </dl>
+            <% else %>
+            <p><% @user.name %> has no Recipes Yet.<br />
+              He Must Be new</p>
             <% end %>
     <% end %>
 
