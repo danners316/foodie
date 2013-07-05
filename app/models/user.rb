@@ -13,9 +13,8 @@ class User < ActiveRecord::Base
   has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
 
-  has_attached_file :image,
-                    :storage => :s3,
-                    :s3_credentials => "#{Rails.root}/config/s3.yml"",
+  has_attached_file :image,                    :storage => :s3,
+                    :s3_credentials => "#{Rails.root}/config/s3.yml",
   :path => ":attachment/:id.:extension",
   :bucket => "foodie_europe"
 
@@ -33,19 +32,11 @@ class User < ActiveRecord::Base
     relationships.find_by_followed_id(other_user.id).destroy
   end
 
-  # Delete This
 
-  def find_user(user)
-    user = User.find(params[:origin])
-    if user.origin = 1
-      user.origin = "Ireland"
-    end
-  end
-  # Delete this
 
   def feed
     Recipe.from_users_followed_by(self)
   end
 
 
- end
+end
